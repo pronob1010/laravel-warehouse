@@ -41,3 +41,5 @@ Route::get('/user/{name}', function($name = "Joy"){
 });
 
 Route::get('/home', [homeController::class , 'index']);
+
+Route::get('test/{name}/{id}', [homeController::class, 'testData']);
