@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\homeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,3 +35,9 @@ Route::match(['get', 'post'], '/create', function () {
 });
 
 Route::redirect('/', '/create');
+
+Route::get('/user/{name}', function($name = "Joy"){
+    return $name;
+});
+
+Route::get('/home', [homeController::class , 'index']);
