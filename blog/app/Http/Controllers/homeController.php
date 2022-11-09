@@ -13,4 +13,9 @@ class homeController extends Controller
     public function testData($name,$id){
         echo "My name is $name. My id is $id.";
     }
+
+    public function extTestData(Request $request){
+        // echo $request;
+        echo "My name is $request->name. My id is $request->id.";
+    }
 }

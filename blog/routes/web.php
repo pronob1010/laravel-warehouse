@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\homeController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,3 +44,11 @@ Route::get('/user/{name}', function($name = "Joy"){
 Route::get('/home', [homeController::class , 'index']);
 
 Route::get('test/{name}/{id}', [homeController::class, 'testData']);
+
+Route::get('/test-extra', [homeController::class, 'extTestData']);
+
+
+// --------------------
+// Laravel CRUD
+
+Route::resource('products', ProductController::class);
