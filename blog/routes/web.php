@@ -20,3 +20,17 @@ Route::get('/', function () {
 Route::get('/pronob', function(){
     return "Hello! Pronob. Wellcome to Laravel.";
 });
+
+Route::get('/about', function(){
+    return "<h2>This is a about page.</h2>";
+});
+
+Route::get('/contact', function(){
+    return "<h2>This is a contact page.</h2>";
+});
+
+Route::match(['get', 'post'], '/create', function () {
+    return view('welcome');
+});
+
+Route::redirect('/', '/create');
