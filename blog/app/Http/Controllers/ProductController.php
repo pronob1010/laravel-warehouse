@@ -15,7 +15,10 @@ class ProductController extends Controller
     public function index()
     {
         //
-    }
+        $products = Product::latest()->paginate(5);
+        return view('products.index',compact('products'))
+        ->with(request()->input('page'));
+        }
 
     /**
      * Show the form for creating a new resource.
@@ -25,6 +28,7 @@ class ProductController extends Controller
     public function create()
     {
         //
+        return view('products.create');
     }
 
     /**
@@ -35,7 +39,14 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required', 
+            'detail'=> 'required',
+        ]);
+
+        Product::create($request->all());
+
+        return redirect()->route('products.index')->with('success', 'Product has been created successfully!');
     }
 
     /**
@@ -47,6 +58,7 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         //
+        return view('products.show', compact('product'));
     }
 
     /**
